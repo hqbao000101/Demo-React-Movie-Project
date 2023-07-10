@@ -15,7 +15,6 @@ const HomeBanner = () => {
   const [banner, setBanner] = useState([]);
   const getAllBanner = async () => {
     const res = await movieServ.getAllBanners();
-    console.log(res.data.content);
     setBanner(res.data.content);
   };
 
@@ -24,11 +23,11 @@ const HomeBanner = () => {
   }, []);
 
   return (
-    <Carousel className="mb-10">
+    <Carousel>
       {banner.map((item, index) => {
         return (
           <div key={index} className="h-90vh">
-            <img className="w-full h-full" src={item.hinhAnh} alt="" />
+            <img className="object-cover w-full h-full" src={item.hinhAnh} alt="" />
           </div>
         );
       })}

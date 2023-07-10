@@ -20,3 +20,6 @@
 # Sources Link
   - Swagger APIs: https://movienew.cybersoft.edu.vn/swagger/index.html 
   
+# Other Supports
+  - animation: LottieFiles --> npm install --save react-lottie (--force)
+  - format Datetime: Moment --> npm i moment (--force)
