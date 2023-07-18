@@ -23,10 +23,10 @@ const HomeBanner = () => {
   }, []);
 
   return (
-    <Carousel>
+    <Carousel autoplay>
       {banner.map((item, index) => {
         return (
-          <div key={index} className="h-90vh">
+          <div key={index} className="h-93vh">
             <img className="object-cover w-full h-full" src={item.hinhAnh} alt="" />
           </div>
         );

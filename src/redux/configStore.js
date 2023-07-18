@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import userSlice from "./slices/userSlice";
 
 export const store = configureStore({
   reducer: {
@@ -8,5 +9,6 @@ export const store = configureStore({
     startDay: (state = "Friday, July 7th, 2023", action) => {
       return state;
     },
+    user: userSlice,
   },
 });

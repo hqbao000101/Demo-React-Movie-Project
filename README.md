@@ -23,3 +23,5 @@
 # Other Supports
   - animation: LottieFiles --> npm install --save react-lottie (--force)
   - format Datetime: Moment --> npm i moment (--force)
+  - form validation --> formik --> npm install formik --save
+    + yup --> npm i yup

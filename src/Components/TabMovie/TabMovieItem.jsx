@@ -2,6 +2,7 @@ import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
 import { theaterServ } from "../../services/theaterServices";
 import moment from "moment/moment";
+import { NavLink } from "react-router-dom";
 
 const TabMovieItem = ({ maHeThongRap }) => {
   const [schedule, setSchedule] = useState([]);
@@ -26,9 +27,11 @@ const TabMovieItem = ({ maHeThongRap }) => {
               {item.tenCumRap}
             </p>
             <p className="truncate">{item.diaChi}</p>
-            <button className="mt-2 font-medium text-red-500">
-              [Chi tiết]
-            </button>
+            <NavLink to="/theater-details">
+              <button className="mt-2 font-medium text-orange-300 duration-300 hover:text-red-600">
+                [Chi tiết]
+              </button>
+            </NavLink>
           </div>
         ),
         key: index,
@@ -42,22 +45,34 @@ const TabMovieItem = ({ maHeThongRap }) => {
                       <img
                         src={item.hinhAnh}
                         alt=""
-                        className="object-cover h-56"
+                        className="object-cover h-56 border border-black shadow-md"
                       />
                     </div>
-                    <div className="w-10/12 ps-5">
-                      <h3 className="mb-3 font-bold">{item.tenPhim}</h3>
-                      {item.lstLichChieuTheoPhim
-                        .slice(0, 5)
-                        .map((suatChieu, index) => {
-                          return (
-                            <p key={index}>
-                              {moment(suatChieu.ngayChieuGioChieu).format(
-                                "DD/MM/YYYY, h:mm"
-                              )}
-                            </p>
-                          );
-                        })}
+                    <div className="w-10/12 px-5">
+                      <h3 className="mb-3 text-lg font-bold">{item.tenPhim}</h3>
+                      <div className="grid grid-cols-2 gap-5">
+                        {item.lstLichChieuTheoPhim
+                          .slice(0, 5)
+                          .map((suatChieu, index) => {
+                            return (
+                              <NavLink to="/movie-details" key={index}>
+                                <p className="py-2 text-center duration-300 bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-200">
+                                  <span className="mr-2 font-medium text-green-600">
+                                    {moment(suatChieu.ngayChieuGioChieu).format(
+                                      "DD-MM-YYYY"
+                                    )}
+                                  </span>
+                                  ~
+                                  <span className="ml-2 font-medium text-red-500">
+                                    {moment(suatChieu.ngayChieuGioChieu).format(
+                                      "h:mm"
+                                    )}
+                                  </span>
+                                </p>
+                              </NavLink>
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
                 );
