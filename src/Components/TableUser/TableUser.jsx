@@ -6,7 +6,7 @@ import { getAllUsers } from "../../redux/slices/userSlice";
 import "./TableUser.scss";
 
 // todo: need --> id, name, email, phone number, userType, account, action
-const TableUser = () => {
+const TableUser = ({ showDrawer }) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.users);
   // console.log(users);
@@ -97,7 +97,12 @@ const TableUser = () => {
             </button>
           </Popconfirm>
 
-          <button className="px-5 py-2 text-white duration-500 bg-yellow-400 rounded-lg hover:bg-yellow-500">
+          <button
+            onClick={() => {
+              showDrawer();
+            }}
+            className="px-5 py-2 text-white duration-500 bg-yellow-400 rounded-lg hover:bg-yellow-500"
+          >
             Edit
           </button>
         </Space>

@@ -42,7 +42,7 @@ const UserManagement = () => {
       >
         Add
       </button>
-      <TableUser />
+      <TableUser showDrawer={showDrawer} />
       <Drawer
         title="Add new users"
         placement="right"
