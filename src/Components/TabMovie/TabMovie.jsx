@@ -1,4 +1,4 @@
-import { Tabs } from "antd";
+import { Tabs, message } from "antd";
 import React, { useEffect, useState } from "react";
 import { theaterServ } from "../../services/theaterServices";
 import TabMovieItem from "./TabMovieItem";
@@ -13,7 +13,7 @@ const TabMovie = () => {
         setTheater(res.data.content);
       })
       .catch((err) => {
-        console.log(err);
+        message.error(err.response.data);
       });
   }, []);
 

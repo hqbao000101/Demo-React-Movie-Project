@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { movieServ } from "../../services/movieServices";
 import { NavLink } from "react-router-dom";
-import { Button } from "antd";
+import { Button, message } from "antd";
+import { useDispatch } from "react-redux";
+import {
+  set_loading_ended,
+  set_loading_started,
+} from "../../redux/slices/loadingSlice";
 
 const ListMovie = () => {
   const [movie, setMovie] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(set_loading_started());
     movieServ
       .getAllMovies()
       .then((res) => {
         setMovie(res.data.content);
+        dispatch(set_loading_ended());
       })
       .catch((err) => {
-        console.log(err);
+        message.error(err.response.data);
+        dispatch(set_loading_ended());
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

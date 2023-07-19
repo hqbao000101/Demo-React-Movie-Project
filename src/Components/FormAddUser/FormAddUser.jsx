@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { userServ } from "../../services/userServices";
 import { useDispatch } from "react-redux";
 import { getAllUsers } from "../../redux/slices/userSlice";
+import { message } from "antd";
 
 const FormAddUser = () => {
   const dispatch = useDispatch();
@@ -19,12 +20,10 @@ const FormAddUser = () => {
 
     onSubmit: async (values) => {
       try {
-        console.log(values);
-        const res = await userServ.addUsers({ ...values });
-        console.log(res);
+        await userServ.addUsers({ ...values });
         dispatch(getAllUsers());
       } catch (error) {
-        console.log(error);
+        message.error(error.response.data);
       }
     },
   });
