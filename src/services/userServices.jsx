@@ -5,7 +5,7 @@ export const userServ = {
     return https.post("/api/QuanLyNguoiDung/DangNhap", data);
   },
   getAllUsers: () => {
-    return https.get("/api/QuanLyNguoiDung/LayDanhSachNguoiDung");
+    return https.get('/api/QuanLyNguoiDung/LayDanhSachNguoiDung');
   },
   deleteUsers: (taiKhoan) => {
     return https.delete(

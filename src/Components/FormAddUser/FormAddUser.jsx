@@ -21,6 +21,7 @@ const FormAddUser = () => {
     onSubmit: async (values) => {
       try {
         await userServ.addUsers({ ...values });
+        message.success("Added a new user");
         dispatch(getAllUsers());
       } catch (error) {
         message.error(error.response.data);
@@ -33,7 +34,7 @@ const FormAddUser = () => {
     matKhau: "admin3",
     email: "admin3@gmail.com",
     soDt: "0123456789",
-    maNhom: "GP10",
+    maNhom: "GP01",
     maLoaiNguoiDung: "Khách hàng",
     hoTen: "admin 3",
   };
